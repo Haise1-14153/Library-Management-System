@@ -76,6 +76,10 @@ public class CREATEDATABASE {
             query = "create table reservation (student_id int,student_name varchar(100),book_id int,book_name varchar(300),book_number int,date_reserved varchar(50))";
             prestmt = conn.prepareStatement(query);
             prestmt.executeUpdate();
+            //create rating
+            query = "create table rating (email varchar(100),bookname varchar(300))";
+            prestmt = conn.prepareStatement(query);
+            prestmt.executeUpdate();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(loginClass.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
