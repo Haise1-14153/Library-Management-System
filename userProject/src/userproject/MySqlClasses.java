@@ -11,8 +11,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.Formatter;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,6 +30,101 @@ public class MySqlClasses {
     Connection conn = null;
     PreparedStatement prestmt = null;
     ResultSet result = null;
+    
+    public void rateBook(double rate,int id,String email) {
+        try {
+            System.out.println("asdasdd");
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/admindatabase","root","root");
+            String cmd = "select * from bookinformation where bookid = ?";
+            prestmt = conn.prepareStatement(cmd);
+            prestmt.setInt(1, id);
+            result = prestmt.executeQuery();
+            result.next();
+            String bookname = result.getString("Book_Name");
+            double[] rating = {result.getDouble("Score"),result.getDouble("Overall_Score")};
+            rating[0]+=rate;
+            rating[1]+=5;
+            
+            cmd = "update bookinformation set Score = ?,Overall_Score = ? where Book_Name = ?";
+            prestmt = conn.prepareStatement(cmd);
+            prestmt.setDouble(1, rating[0]);
+            prestmt.setDouble(2, rating[1]);
+            prestmt.setString(3, bookname);
+            prestmt.executeUpdate();
+            
+            cmd = "INSERT INTO rating values(?,?)";
+            prestmt = conn.prepareStatement(cmd);
+            prestmt.setString(1, email);
+            prestmt.setString(2, bookname);
+            prestmt.executeUpdate();
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(UserProject.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally {
+            closemySQL();
+        }
+    }
+    
+    public boolean checkIfRated(String email,String name) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/admindatabase","root","root");
+            String cmd = "select count(*) from rating where email = ? and bookname = ?";
+            prestmt = conn.prepareStatement(cmd);
+            prestmt.setString(1, email);
+            prestmt.setString(2, name);
+            result = prestmt.executeQuery();
+            result.next();
+            if(result.getInt(1) == 0) {
+                return true;
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(UserProject.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally {
+            closemySQL();
+        }
+        return false;
+    }
+    
+    public String getbookName(int id) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/admindatabase","root","root");
+            String cmd = "select * from bookinformation where bookid = ?";
+            prestmt = conn.prepareStatement(cmd);
+            prestmt.setInt(1, id);
+            result = prestmt.executeQuery();
+            result.next();
+            return result.getString("Book_Name");
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(UserProject.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally {
+            closemySQL();
+        }
+        return "0";
+    }
+    
+    public void category(Choice a) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/admindatabase","root","root");
+            String cmd = "select Category_ from bookinformation group by Category_ having count(*) > 1 order by Category_ asc;";
+            prestmt = conn.prepareStatement(cmd);
+            result = prestmt.executeQuery();
+            a.insert("All", 0);
+            for(int i = 1;result.next();i++) {
+                a.insert(result.getString(1), i);
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(UserProject.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally {
+            closemySQL();
+        }
+    }
     
     public boolean checkduplicate(int studid,int bookid) {
         try {
@@ -395,20 +492,33 @@ public class MySqlClasses {
         }
     }
     
-    public void SearchMethod(JTextField a,JTable b,int setting) {
+    public void SearchMethod(JTextField a,JTable b,int setting,String c) {
         String text = a.getText();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/admindatabase","root","root");
-            String cmd = "select * from bookInformation WHERE available = ? and (Book_Name LIKE \""+ text +"%\" or BookID LIKE \""+ text +"%\")"+" ORDER BY book_name ASC, book_number asc";
-            prestmt = conn.prepareStatement(cmd);
-            prestmt.setInt(1,setting);
+            String cmd = "select * from bookInformation WHERE available = ? and Category_ = ? and (Book_Name LIKE \""+ text +"%\" or BookID LIKE \""+ text +"%\")"+" ORDER BY book_name ASC, book_number asc";
+            String cmd1 = "select * from bookInformation WHERE available = ? and (Book_Name LIKE \""+ text +"%\" or BookID LIKE \""+ text +"%\")"+" ORDER BY book_name ASC, book_number asc";
+            if(c.equals("All")) {
+                prestmt = conn.prepareStatement(cmd1);
+                prestmt.setInt(1,setting);
+            }
+            else {
+                prestmt = conn.prepareStatement(cmd);
+                prestmt.setInt(1,setting);
+                prestmt.setString(2,c);
+            }
+            
             result = prestmt.executeQuery();
             DefaultTableModel table = (DefaultTableModel)b.getModel();
             table.setRowCount(0);
+            DecimalFormat df = new DecimalFormat("#.#"); 
             while(result.next()) {
+                double overallscore = result.getDouble("Overall_Score");
+                double rating = result.getDouble("Score")/overallscore*5;
+                String ratings = (overallscore==0) ? "none" : df.format(rating).toString()+"/5.0";
                 String slot1 = "("+result.getInt("Book_Number")+")"+result.getString("Book_Name");
-                table.addRow(new Object[]{result.getInt("BookID"),slot1});
+                table.addRow(new Object[]{result.getInt("BookID"),slot1,ratings});
             }
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(UserProject.class.getName()).log(Level.SEVERE, null, ex);
@@ -419,13 +529,22 @@ public class MySqlClasses {
         a.setText(text);
     }
     
-    public void SearchMethod(JTable b,int setting) {
+    public void SearchMethod(JTable b,int setting,String c) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/admindatabase","root","root");
-            String cmd = "select * from bookInformation WHERE available = ? ORDER BY book_name ASC, book_number asc";
-            prestmt = conn.prepareStatement(cmd);
-            prestmt.setInt(1,setting);
+            String cmd = "select * from bookInformation WHERE available = ? and Category_ = ? ORDER BY book_name ASC, book_number asc";
+            String cmd1 = "select * from bookInformation WHERE available = ? ORDER BY book_name ASC, book_number asc";
+            if(c.equals("All")) {
+                prestmt = conn.prepareStatement(cmd1);
+                prestmt.setInt(1,setting);
+            }
+            else {
+                prestmt = conn.prepareStatement(cmd);
+                prestmt.setInt(1,setting);
+                prestmt.setString(2,c);
+            }
+            
             result = prestmt.executeQuery();
             DefaultTableModel table = (DefaultTableModel)b.getModel();
             table.setRowCount(0);
@@ -490,6 +609,7 @@ public class MySqlClasses {
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment( JLabel.CENTER );
         a.getColumnModel().getColumn(0).setCellRenderer( centerRenderer );
+        a.getColumnModel().getColumn(2).setCellRenderer( centerRenderer );
     }
     
     public void centerText3(JTable a) {

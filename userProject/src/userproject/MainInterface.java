@@ -15,7 +15,6 @@ import java.time.LocalDate;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.table.DefaultTableCellRenderer;
 
 public class MainInterface extends javax.swing.JFrame implements ActionListener {
 
@@ -67,6 +66,8 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
         jTextField1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         choice1 = new java.awt.Choice();
+        choice3 = new java.awt.Choice();
+        jLabel7 = new javax.swing.JLabel();
         bookreservation = new javax.swing.JPanel();
         jLabel30 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
@@ -118,12 +119,21 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
         jTable3 = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        rateBook = new javax.swing.JPanel();
+        jLabel33 = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jButton25 = new javax.swing.JButton();
+        jButton26 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         Buttons.setBackground(new java.awt.Color(102, 0, 0));
-        Buttons.setPreferredSize(new java.awt.Dimension(270, 550));
+        Buttons.setPreferredSize(new java.awt.Dimension(270, 768));
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
@@ -253,7 +263,7 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(jLabel43)
@@ -261,6 +271,7 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
         );
 
         parent.setPreferredSize(new java.awt.Dimension(973, 768));
+        parent.setRequestFocusEnabled(false);
         parent.setLayout(new java.awt.CardLayout());
 
         browseBook.setBackground(new java.awt.Color(255, 255, 255));
@@ -275,7 +286,7 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 918, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -323,7 +334,7 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 int selectedItem = (choice1.getSelectedIndex()==0) ? 0:1;
-                run.SearchMethod(jTextField1,jTable1,selectedItem);
+                run.SearchMethod(jTextField1,jTable1,selectedItem,choice3.getSelectedItem());
             }
         });
 
@@ -340,6 +351,18 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
             }
         });
 
+        choice3.setFocusable(false);
+        choice3.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
+        run.category(choice3);
+        choice3.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                choice3ItemStateChanged(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jLabel7.setText("Category");
+
         javax.swing.GroupLayout browseBookLayout = new javax.swing.GroupLayout(browseBook);
         browseBook.setLayout(browseBookLayout);
         browseBookLayout.setHorizontalGroup(
@@ -351,16 +374,21 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
                         .addComponent(jLabel29))
                     .addGroup(browseBookLayout.createSequentialGroup()
                         .addGap(49, 49, 49)
-                        .addGroup(browseBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addGroup(browseBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jScrollPane1)
-                                .addGroup(browseBookLayout.createSequentialGroup()
+                        .addGroup(browseBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, browseBookLayout.createSequentialGroup()
+                                .addGroup(browseBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(choice1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(49, Short.MAX_VALUE))
+                                    .addComponent(jLabel3))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(browseBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel7)
+                                    .addGroup(browseBookLayout.createSequentialGroup()
+                                        .addComponent(choice3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(choice1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 918, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         browseBookLayout.setVerticalGroup(
             browseBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -370,17 +398,20 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
+                .addGroup(browseBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel7))
                 .addGap(5, 5, 5)
                 .addGroup(browseBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(choice1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1))
-                .addGap(18, 18, Short.MAX_VALUE)
+                    .addComponent(jTextField1)
+                    .addComponent(choice3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        run.SearchMethod(jTable1,0);
+        run.SearchMethod(jTable1,0,"All");
 
         parent.add(browseBook, "card3");
 
@@ -409,14 +440,14 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
 
             },
             new String [] {
-                "Book ID", "Book name"
+                "Book ID", "Book name", "Rating"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -427,12 +458,10 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
                 return canEdit [columnIndex];
             }
         });
-        jTable2.setFocusable(false);
+        jTable2.setCellSelectionEnabled(false);
         run.centerText2(jTable2);
         run.setheadertoBold(jTable2);
         jTable2.setRowHeight(30);
-        jTable2.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jTable2.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTable2.setShowGrid(true);
         jTable2.getTableHeader().setReorderingAllowed(false);
         jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -441,18 +470,20 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
             }
         });
         jScrollPane2.setViewportView(jTable2);
-        jTable2.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         if (jTable2.getColumnModel().getColumnCount() > 0) {
             jTable2.getColumnModel().getColumn(0).setMinWidth(100);
             jTable2.getColumnModel().getColumn(0).setPreferredWidth(100);
             jTable2.getColumnModel().getColumn(0).setMaxWidth(100);
             jTable2.getColumnModel().getColumn(1).setResizable(false);
+            jTable2.getColumnModel().getColumn(2).setMinWidth(100);
+            jTable2.getColumnModel().getColumn(2).setPreferredWidth(100);
+            jTable2.getColumnModel().getColumn(2).setMaxWidth(100);
         }
 
         jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                run.SearchMethod(jTextField2,jTable2,0);
+                run.SearchMethod(jTextField2,jTable2,0,"All");
             }
         });
 
@@ -489,7 +520,7 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
                         .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         bookreservationLayout.setVerticalGroup(
             bookreservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -508,12 +539,12 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
                 .addComponent(jLabel4)
                 .addGap(5, 5, 5)
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        run.SearchMethod(jTable1,0);
+        run.SearchMethod(jTable1,0,"All");
 
         parent.add(bookreservation, "card3");
 
@@ -609,7 +640,7 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
                         .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         viewreservationLayout.setVerticalGroup(
             viewreservationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -629,7 +660,7 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
                 .addContainerGap())
         );
 
-        run.SearchMethod(jTable1,0);
+        run.SearchMethod(jTable1,0,"All");
 
         parent.add(viewreservation, "card3");
 
@@ -741,7 +772,7 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
                 .addGroup(verificationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(420, Short.MAX_VALUE))
+                .addContainerGap(503, Short.MAX_VALUE))
         );
 
         manageAccount.add(verification, "card2");
@@ -855,7 +886,7 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
                 .addGroup(editInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(347, Short.MAX_VALUE))
+                .addContainerGap(430, Short.MAX_VALUE))
         );
 
         manageAccount.add(editInformation, "card2");
@@ -958,7 +989,7 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
                 .addGroup(inputNewPassLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(406, Short.MAX_VALUE))
+                .addContainerGap(489, Short.MAX_VALUE))
         );
 
         manageAccount.add(inputNewPass, "card2");
@@ -1008,14 +1039,20 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
                 return canEdit [columnIndex];
             }
         });
-        jTable3.setFocusable(false);
         run.centerText1(jTable3);
         run.setheadertoBold(jTable3);
         jTable3.setRowHeight(30);
-        jTable3.setRowSelectionAllowed(false);
+        jTable3.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jTable3.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jTable3.setShowGrid(true);
         jTable3.getTableHeader().setReorderingAllowed(false);
+        jTable3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable3MouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(jTable3);
+        jTable3.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         if (jTable3.getColumnModel().getColumnCount() > 0) {
             jTable3.getColumnModel().getColumn(0).setMinWidth(100);
             jTable3.getColumnModel().getColumn(0).setPreferredWidth(100);
@@ -1055,7 +1092,7 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
                                 .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jScrollPane3))
                             .addComponent(jLabel5))))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         dashboardLayout.setVerticalGroup(
             dashboardLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1069,13 +1106,122 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
                 .addGap(18, 18, 18)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 502, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        run.SearchMethod(jTable1,0);
+        run.SearchMethod(jTable1,0,"All");
 
         parent.add(dashboard, "card3");
+
+        rateBook.setBackground(new java.awt.Color(255, 255, 255));
+        rateBook.setPreferredSize(new java.awt.Dimension(1016, 748));
+
+        jLabel33.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
+        jLabel33.setText("Rate book");
+
+        jPanel10.setBackground(new java.awt.Color(102, 0, 0));
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 918, Short.MAX_VALUE)
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 5, Short.MAX_VALUE)
+        );
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel9.setText("Bookname: ");
+
+        jTextField3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        jLabel10.setText("/ 5.0");
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel11.setText("Rating");
+
+        jButton25.setBackground(new java.awt.Color(51, 0, 0));
+        jButton25.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jButton25.setForeground(new java.awt.Color(255, 255, 255));
+        jButton25.setText("Enter");
+        jButton25.setBorderPainted(false);
+        jButton25.setVerifyInputWhenFocusTarget(false);
+        jButton25.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton25ActionPerformed(evt);
+            }
+        });
+
+        jButton26.setBackground(new java.awt.Color(51, 0, 0));
+        jButton26.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        jButton26.setForeground(new java.awt.Color(255, 255, 255));
+        jButton26.setText("Cancel");
+        jButton26.setBorderPainted(false);
+        jButton26.setVerifyInputWhenFocusTarget(false);
+        jButton26.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton26ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout rateBookLayout = new javax.swing.GroupLayout(rateBook);
+        rateBook.setLayout(rateBookLayout);
+        rateBookLayout.setHorizontalGroup(
+            rateBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(rateBookLayout.createSequentialGroup()
+                .addGroup(rateBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(rateBookLayout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(jLabel33))
+                    .addGroup(rateBookLayout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addGroup(rateBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(rateBookLayout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addGroup(rateBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel11)
+                                    .addGroup(rateBookLayout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel10))
+                                    .addComponent(jLabel9)
+                                    .addGroup(rateBookLayout.createSequentialGroup()
+                                        .addComponent(jButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jButton26, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addContainerGap(49, Short.MAX_VALUE))
+        );
+        rateBookLayout.setVerticalGroup(
+            rateBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(rateBookLayout.createSequentialGroup()
+                .addGap(85, 85, 85)
+                .addComponent(jLabel33)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(rateBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField3)
+                    .addComponent(jLabel10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(rateBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton26, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(507, 507, 507))
+        );
+
+        run.SearchMethod(jTable1,0,"All");
+
+        parent.add(rateBook, "card3");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1090,7 +1236,7 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(parent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(Buttons, javax.swing.GroupLayout.DEFAULT_SIZE, 768, Short.MAX_VALUE)
+            .addComponent(Buttons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         setSize(new java.awt.Dimension(1366, 768));
@@ -1106,8 +1252,9 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         run.notification(jButton8,USERNAME);
         jTextField1.setText("");
+        choice3.select(0);
         int selectedItem = (choice1.getSelectedIndex()==0) ? 0:1;
-        run.SearchMethod(jTextField1,jTable1,selectedItem);
+        run.SearchMethod(jTextField1,jTable1,selectedItem,choice3.getSelectedItem());
         changepanel(parent, browseBook);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -1177,11 +1324,12 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
 
     private void choice1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_choice1ItemStateChanged
         int selectedItem = (choice1.getSelectedIndex()==0) ? 0:1;
-        run.SearchMethod(jTable1,selectedItem);
+        String choice = choice3.getSelectedItem();
+        run.SearchMethod(jTable1,selectedItem,choice);
     }//GEN-LAST:event_choice1ItemStateChanged
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        run.SearchMethod(jTextField2,jTable2,0);
+        run.SearchMethod(jTextField2,jTable2,0,"All");
         run.notification(jButton8,USERNAME);
         changepanel(parent,bookreservation);
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -1219,9 +1367,62 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        run.SearchMethod(jTextField2,jTable2,0);
+        run.SearchMethod(jTextField2,jTable2,0,"All");
         changepanel(parent,bookreservation);
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jTable4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable4MouseClicked
+        if (JOptionPane.showConfirmDialog(null, "Cancel reservation?", "confirmation", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
+            int bookid = Integer.parseInt(jTable4.getModel().getValueAt(jTable4.getSelectedRow(), 0).toString());
+            run.cancelreservation(id,bookid);
+            run.viewreservedbook(jTable4,id);
+        }
+    }//GEN-LAST:event_jTable4MouseClicked
+
+    private void choice3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_choice3ItemStateChanged
+        int selectedItem = (choice1.getSelectedIndex()==0) ? 0:1;
+        String choice = choice3.getSelectedItem();
+        run.SearchMethod(jTable1,selectedItem,choice);
+    }//GEN-LAST:event_choice3ItemStateChanged
+
+    private void jTable3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable3MouseClicked
+        int bookid = Integer.parseInt(jTable3.getModel().getValueAt(jTable3.getSelectedRow(), 0).toString());
+        String bookname = run.getbookName(bookid);
+        bookname = (bookname.length() > 60) ? bookname.substring(0,60)+"..." : bookname;
+        if(run.checkIfRated(USERNAME, bookname)) {
+            jLabel9.setText("Bookname: "+bookname);
+            changepanel(parent,rateBook);
+        }
+        else {
+            JOptionPane.showMessageDialog(null,"You already rate the book","Error message",JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jTable3MouseClicked
+
+    private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
+        try {
+            double input = Double.parseDouble(jTextField3.getText());
+            if(input >= 0 && input <= 5) {
+                if (JOptionPane.showConfirmDialog(null, "Rate book?", "confirmation", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
+                    int bookid = Integer.parseInt(jTable3.getModel().getValueAt(jTable3.getSelectedRow(), 0).toString());
+                    run.rateBook(input,bookid,USERNAME);
+                    jTextField3.setText("");
+                    changepanel(parent,dashboard);
+                    JOptionPane.showMessageDialog(null,"Book rated","Done",JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+            else {
+                JOptionPane.showMessageDialog(null,"Rate must be 0.0 - 5.0","Error message",JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        catch(Exception e) {
+            JOptionPane.showMessageDialog(null,"Invalid input","Error message",JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton25ActionPerformed
+
+    private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
+        jTextField3.setText("");
+        changepanel(parent,dashboard);
+    }//GEN-LAST:event_jButton26ActionPerformed
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
         if (JOptionPane.showConfirmDialog(null, "Reserve book?", "confirmation", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
@@ -1236,14 +1437,6 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
             }
         }
     }//GEN-LAST:event_jTable2MouseClicked
-
-    private void jTable4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable4MouseClicked
-        if (JOptionPane.showConfirmDialog(null, "Cancel reservation?", "confirmation", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
-            int bookid = Integer.parseInt(jTable4.getModel().getValueAt(jTable4.getSelectedRow(), 0).toString());
-            run.cancelreservation(id,bookid);
-            run.viewreservedbook(jTable4,id);
-        }
-    }//GEN-LAST:event_jTable4MouseClicked
 
     public void MainInterface() {
         try {
@@ -1423,6 +1616,7 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
     private java.awt.Choice choice1;
     private java.awt.Choice choice19;
     private java.awt.Choice choice2;
+    private java.awt.Choice choice3;
     private javax.swing.JPanel dashboard;
     private javax.swing.JPanel editInformation;
     private javax.swing.JPanel inputNewPass;
@@ -1434,6 +1628,8 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
     private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton24;
+    private javax.swing.JButton jButton25;
+    private javax.swing.JButton jButton26;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -1441,12 +1637,15 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel47;
@@ -1461,6 +1660,9 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
     private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
@@ -1483,8 +1685,10 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
     private javax.swing.JTextField jTextField18;
     private javax.swing.JTextField jTextField19;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     private javax.swing.JPanel manageAccount;
     private javax.swing.JPanel parent;
+    private javax.swing.JPanel rateBook;
     private javax.swing.JPanel verification;
     private javax.swing.JPanel viewreservation;
     // End of variables declaration//GEN-END:variables
