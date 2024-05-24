@@ -439,7 +439,7 @@ public class MySqlClasses {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/admindatabase","root","root");
-            String cmd = "select * from borrowedBooks WHERE BookID LIKE \""+ text +"%\" or Student_Name LIKE \""+ text +"%\" ORDER BY  Student_Name asc";
+            String cmd = "select * from borrowedBooks WHERE BookID LIKE \""+ text +"%\" or StudentID LIKE \""+ text +"%\" ORDER BY  Student_Name asc";
             prestmt = conn.prepareStatement(cmd);
 
             DefaultTableModel table = (DefaultTableModel)b.getModel();
