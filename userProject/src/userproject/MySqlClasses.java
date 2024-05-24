@@ -111,7 +111,7 @@ public class MySqlClasses {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/admindatabase","root","root");
-            String cmd = "select Category_ from bookinformation group by Category_ having count(*) > 1 order by Category_ asc;";
+            String cmd = "select Category_ from bookinformation group by Category_ having count(*) > 0 order by Category_ asc";
             prestmt = conn.prepareStatement(cmd);
             result = prestmt.executeQuery();
             a.insert("All", 0);

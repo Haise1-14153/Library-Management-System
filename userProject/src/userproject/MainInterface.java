@@ -458,11 +458,12 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
                 return canEdit [columnIndex];
             }
         });
-        jTable2.setCellSelectionEnabled(false);
+        jTable2.setFocusable(false);
         run.centerText2(jTable2);
         run.setheadertoBold(jTable2);
         jTable2.setRowHeight(30);
         jTable2.setShowGrid(true);
+        jTable2.setSurrendersFocusOnKeystroke(true);
         jTable2.getTableHeader().setReorderingAllowed(false);
         jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
