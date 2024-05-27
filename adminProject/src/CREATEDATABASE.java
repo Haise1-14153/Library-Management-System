@@ -1,5 +1,5 @@
 
-import adminproject.loginClass;
+import adminproject.adminloginClass;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -8,36 +8,21 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
-
-/**
- *
- * @author Azcuna
- */
 public class CREATEDATABASE {
-
-    /**
-     * @param args the command line arguments
-     */
-    private static Connection conn = null;
-    private static PreparedStatement prestmt = null;
-    private static ResultSet result = null;
+    //this code will be saved on my github. I want to run this program on my laptop soon without errors.
+    //the project will automtically delete itself on June 01, 2024.
+    //this is just all MySql commands that create tables.
     
     public static void main(String[] args) {
+        Connection conn = null;
+        PreparedStatement prestmt = null;
+        ResultSet result = null;
+        
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/admindatabase","root","root");
-            //create adminaccountinfo
-            String query = "create table adminaccountinfo (username varchar(100),pass varchar(100),firstname varchar(100),lastname varchar(100),"
-                    + "birthmonth varchar(10),birthday int,birthyear int,gender varchar(10),datecreated varchar(50))";
-            prestmt = conn.prepareStatement(query);
-            prestmt.executeUpdate();
-            //create staffaccountinfo
-            query = "create table staffaccountinfo (username varchar(100),pass varchar(100),firstname varchar(100),lastname varchar(100),"
-                    + "birthmonth varchar(10),birthday int,birthyear int,gender varchar(10),datecreated varchar(50))";
+            //create accountinfo
+            String query = "create table accountinfo (username varchar(100),pass varchar(100),firstname varchar(100),lastname varchar(100),birthmonth varchar(10),birthday int,birthyear int,gender varchar(10),datecreated varchar(50),account_type tinyint)";
             prestmt = conn.prepareStatement(query);
             prestmt.executeUpdate();
             //create useraccountinfo
@@ -46,7 +31,7 @@ public class CREATEDATABASE {
             prestmt = conn.prepareStatement(query);
             prestmt.executeUpdate();
             //create bookinformation
-            query = "create table bookinformation (BookID int,Book_Name varchar(300),Author varchar(300),Overview varchar(300),"
+            query = "create table bookinformation (BookID int,Book_Name varchar(300),Author varchar(300),ISBN varchar(300),"
                     + "Language_ varchar(30),Category_ varchar(100),Condition_ varchar(10)),Book_Number int,Score double,Overall_Score double,available tinyint";
             prestmt = conn.prepareStatement(query);
             prestmt.executeUpdate();
@@ -80,35 +65,28 @@ public class CREATEDATABASE {
             query = "create table rating (email varchar(100),bookname varchar(300))";
             prestmt = conn.prepareStatement(query);
             prestmt.executeUpdate();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(loginClass.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SQLException ex) {
-            Logger.getLogger(loginClass.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(adminloginClass.class.getName()).log(Level.SEVERE, null, ex);
         }
         finally {
-            closemySQL();
+            if (result != null) {
+                try {
+                    result.close();
+                } catch (SQLException sqlEx) { }
+                    result = null;
+            }
+            if (prestmt != null) {
+                try {
+                    prestmt.close();
+                } catch (SQLException sqlEx) { }
+                    prestmt = null;
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException sqlEx) { }
+                    conn = null;
+           }
         }
     }
-    
-    private static void closemySQL() {
-        if (result != null) {
-            try {
-                result.close();
-            } catch (SQLException sqlEx) { }
-                result = null;
-        }
-        if (prestmt != null) {
-            try {
-                prestmt.close();
-            } catch (SQLException sqlEx) { }
-                prestmt = null;
-        }
-        if (conn != null) {
-            try {
-                conn.close();
-            } catch (SQLException sqlEx) { }
-                conn = null;
-       }
-    }
-    
 }

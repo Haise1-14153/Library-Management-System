@@ -1,9 +1,11 @@
+package adminproject;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package adminproject;
 
+import staffproject.*;
 import java.awt.Choice;
 import java.time.LocalDate;
 import java.util.StringTokenizer;
@@ -118,7 +120,7 @@ public class AdminProject extends javax.swing.JFrame {
         jLabel29 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Admin login");
+        setTitle("login");
         setMinimumSize(new java.awt.Dimension(770, 450));
         setResizable(false);
 
@@ -169,6 +171,7 @@ public class AdminProject extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Password");
 
+        jPasswordField1.setText("asd");
         jPasswordField1.setMinimumSize(new java.awt.Dimension(64, 25));
         jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -199,6 +202,7 @@ public class AdminProject extends javax.swing.JFrame {
 
         jLabel23.setIcon(new javax.swing.ImageIcon("C:\\Users\\Administrator\\Documents\\NetBeansProjects\\adminProject\\src\\image\\passwordIcon.png")); // NOI18N
 
+        jTextField1.setText("jarameldanriel777@gmail.com");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -309,6 +313,7 @@ public class AdminProject extends javax.swing.JFrame {
         for(int i=0;i<12;i++){
             choice2.insert(month[i],i+1);
         }
+        choice2.setFocusable(false);
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         jLabel18.setText("Month");
@@ -334,10 +339,12 @@ public class AdminProject extends javax.swing.JFrame {
         for(int i=1;i<32;i++){
             choice4.insert(Integer.toString(i),i);
         }
+        choice4.setFocusable(false);
 
         for(int i=64;i>0;--i){
             choice5.insert(Integer.toString(1960+i),65-i);
         }
+        choice5.setFocusable(false);
 
         jPanel1.setBackground(new java.awt.Color(102, 0, 0));
 
@@ -612,13 +619,14 @@ public class AdminProject extends javax.swing.JFrame {
 
         jLabel10.setText("Password");
 
-        jLabel11.setText("Firstname");
+        jLabel11.setText("First name");
 
-        jLabel12.setText("Lastname");
+        jLabel12.setText("Last name");
 
         for(int i=0;i<12;i++){
             choice1.insert(month[i],i+1);
         }
+        choice1.setFocusable(false);
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         jLabel14.setText("Month");
@@ -643,16 +651,19 @@ public class AdminProject extends javax.swing.JFrame {
 
         choice3.insert("Male",1);
         choice3.insert("Female",2);
+        choice3.setFocusable(false);
 
         jLabel24.setText("Birthdate");
 
         for(int i=1;i<32;i++){
             choice6.insert(Integer.toString(i),i);
         }
+        choice6.setFocusable(false);
 
         for(int i=64;i>0;--i){
             choice7.insert(Integer.toString(1960+i),65-i);
         }
+        choice7.setFocusable(false);
 
         jPanel2.setBackground(new java.awt.Color(102, 0, 0));
 
@@ -679,7 +690,7 @@ public class AdminProject extends javax.swing.JFrame {
 
         jLabel32.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(153, 0, 0));
-        jLabel32.setText("Note: Your email is your username.");
+        jLabel32.setText("Note: Your email will be the username.");
 
         javax.swing.GroupLayout createAccInterfaceLayout = new javax.swing.GroupLayout(createAccInterface);
         createAccInterface.setLayout(createAccInterfaceLayout);
@@ -899,7 +910,7 @@ public class AdminProject extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     
-    loginClass myObj = new loginClass();
+    adminloginClass run = new adminloginClass();
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         changepanel(page,createAccInterface);
@@ -908,6 +919,7 @@ public class AdminProject extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         changepanel(page,defaultBackground);
+        run.checkTime();
         loggingInCall();
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -934,8 +946,8 @@ public class AdminProject extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Make sure there's no empty boxes","Error message",JOptionPane.ERROR_MESSAGE);
         }
         else {
-            if(myObj.checkDuplicateEmail(user)) {
-                if(myObj.setCode(user,"Your code for creating your Account is ")) {
+            if(run.checkDuplicateEmail(user)) {
+                if(run.setCode(user,"Your code for creating your Account is ")) {
                     jLabel29.setVisible(false);
                     changepanel(page,signupCodePanel);
                 }
@@ -964,8 +976,8 @@ public class AdminProject extends javax.swing.JFrame {
         int bday = Integer.parseInt(choice4.getItem(choice4.getSelectedIndex()));
         int byear = Integer.parseInt(choice5.getItem(choice5.getSelectedIndex()));
         
-        if(myObj.recoverAccount(user,bmon,bday,byear)) {
-            if(myObj.setCode(user,"Your code for changing your password is ")) {
+        if(run.recoverAccount(user,bmon,bday,byear)) {
+            if(run.setCode(user,"Your code for changing your password is ")) {
                 jLabel35.setVisible(false);
                 changepanel(page,forgotpassCodePanel);
             }
@@ -980,7 +992,7 @@ public class AdminProject extends javax.swing.JFrame {
             if(JOptionPane.showConfirmDialog(null,"Save your new password?","Confirmation",JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
                 changepanel(page,defaultBackground);
                 changepanel(parent,loginInterface);
-                myObj.changepass(user,newPass);
+                run.changepass(user,newPass);
                 JOptionPane.showMessageDialog(null,"Password saved!","Saved",JOptionPane.INFORMATION_MESSAGE);
                 erase(jTextField2,jTextField7,jPasswordField2,choice2,choice4,choice5);
             }
@@ -1004,9 +1016,9 @@ public class AdminProject extends javax.swing.JFrame {
         int code;
         try {
             code = Integer.parseInt(strCode);
-            if(myObj.compareCode(user,code)) {
+            if(run.compareCode(user,code)) {
                 String dateCreated = month[date[1]]+" "+date[2]+" "+date[0];
-                myObj.createAccount(user,pass,fname,lname,bmon,bday,byear,gender,dateCreated);
+                run.createAdminAccount(user,pass,fname,lname,bmon,bday,byear,gender,dateCreated);
                 JOptionPane.showMessageDialog(null,"Account created","Information message",JOptionPane.INFORMATION_MESSAGE);
                 erase(choice3,choice1,choice6,choice7,jTextField3,jTextField4,jTextField5,jTextField6);
                 changepanel(page,defaultBackground);
@@ -1023,7 +1035,7 @@ public class AdminProject extends javax.swing.JFrame {
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         String user = jTextField5.getText();
-        myObj.setCode(user,"Your code for creating your Account is ");
+        run.setCode(user,"Your code for creating your Account is ");
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
@@ -1032,7 +1044,7 @@ public class AdminProject extends javax.swing.JFrame {
         int code;
         try {
             code = Integer.parseInt(strCode);
-            if(myObj.compareCode(user,code)) {
+            if(run.compareCode(user,code)) {
                 changepanel(page,inputnewPassword);
             }
             else {
@@ -1046,17 +1058,28 @@ public class AdminProject extends javax.swing.JFrame {
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         String user = jTextField2.getText();
-        myObj.setCode(user,"Your code for changing your password is ");
+        run.setCode(user,"Your code for changing your password is ");
     }//GEN-LAST:event_jButton12ActionPerformed
     
     private void loggingInCall() {             
         String user = jTextField1.getText();
         String pass = new String(jPasswordField1.getPassword());
-        
-        if(myObj.loggingIn(user,pass)) {
+        String[] name = new String[2];
+        if(run.loggingIn(user,pass,name)) {
             dispose();
-            MainInterface run = new MainInterface(user);
-            run.MainInterface();
+            int type = run.TypeofAccount(user,pass);
+            if(type == 1) {
+                AdminInterface run1 = new AdminInterface(user);
+                run1.MainInterface();
+            }
+            else if(type == 0) {
+                StaffInterface run1 = new StaffInterface(user,name);
+                run1.MainInterface();
+            }
+            else {
+                JOptionPane.showMessageDialog(null,"Error","Error",JOptionPane.ERROR_MESSAGE);
+            }
+            
         }
         else {
             jLabel7.setVisible(true);
