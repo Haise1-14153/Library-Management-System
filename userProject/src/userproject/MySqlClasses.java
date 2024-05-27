@@ -5,6 +5,7 @@
 package userproject;
 
 import java.awt.*;
+import java.io.*;
 import javax.swing.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,7 +15,7 @@ import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.util.Formatter;
+import com.opencsv.CSVWriter;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,6 +31,38 @@ public class MySqlClasses {
     Connection conn = null;
     PreparedStatement prestmt = null;
     ResultSet result = null;
+    
+    public void downloadFile() {
+        try {
+            CSVWriter writer = new CSVWriter(new FileWriter("C:\\Users\\Administrator\\Downloads\\BookList.csv"));
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/admindatabase","root","root");
+            String cmd = "select * from bookInformation ORDER BY book_name ASC";
+            prestmt = conn.prepareStatement(cmd);
+            result = prestmt.executeQuery();
+            String checkduplicate = "0123";
+            String line1[] = {"Book name","Author","Language","Category"};
+            writer.writeNext(line1);
+            while(result.next()) {
+                if(result.getString("Book_name").equalsIgnoreCase(checkduplicate)) {
+                    continue;
+                }
+               
+                String line2[] = {result.getString("Book_name"), result.getString("Author"),result.getString("Language_"),result.getString("Category_")};
+                writer.writeNext(line2);
+                checkduplicate = result.getString("Book_name");
+            }
+            writer.flush();
+            writer.close();
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(UserProject.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(MySqlClasses.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally {
+            closemySQL();
+        }
+    }
     
     public void rateBook(double rate,int id,String email) {
         try {

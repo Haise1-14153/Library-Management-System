@@ -58,16 +58,6 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
         jButton8 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         parent = new javax.swing.JPanel();
-        browseBook = new javax.swing.JPanel();
-        jLabel29 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        choice1 = new java.awt.Choice();
-        choice3 = new java.awt.Choice();
-        jLabel7 = new javax.swing.JLabel();
         bookreservation = new javax.swing.JPanel();
         jLabel30 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
@@ -138,7 +128,7 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Browse Book ");
+        jButton1.setText("Book list");
         jButton1.setBorderPainted(false);
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -273,147 +263,6 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
         parent.setPreferredSize(new java.awt.Dimension(973, 768));
         parent.setRequestFocusEnabled(false);
         parent.setLayout(new java.awt.CardLayout());
-
-        browseBook.setBackground(new java.awt.Color(255, 255, 255));
-        browseBook.setPreferredSize(new java.awt.Dimension(1016, 748));
-
-        jLabel29.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel29.setText("Browse Books");
-
-        jPanel6.setBackground(new java.awt.Color(102, 0, 0));
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 5, Short.MAX_VALUE)
-        );
-
-        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Book ID", "Book name"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jTable1.setFocusable(false);
-        jTable1.setRowHeight(30);
-        jTable1.setRowSelectionAllowed(false);
-        jTable1.setShowGrid(true);
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
-        run.setheadertoBold(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setMinWidth(100);
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(100);
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(100);
-        }
-
-        jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                int selectedItem = (choice1.getSelectedIndex()==0) ? 0:1;
-                run.SearchMethod(jTextField1,jTable1,selectedItem,choice3.getSelectedItem());
-            }
-        });
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel3.setText("Search Bar");
-
-        choice1.setFocusable(false);
-        choice1.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        choice1.insert("available",1);
-        choice1.insert("unavailable",2);
-        choice1.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                choice1ItemStateChanged(evt);
-            }
-        });
-
-        choice3.setFocusable(false);
-        choice3.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        run.category(choice3);
-        choice3.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                choice3ItemStateChanged(evt);
-            }
-        });
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel7.setText("Category");
-
-        javax.swing.GroupLayout browseBookLayout = new javax.swing.GroupLayout(browseBook);
-        browseBook.setLayout(browseBookLayout);
-        browseBookLayout.setHorizontalGroup(
-            browseBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(browseBookLayout.createSequentialGroup()
-                .addGroup(browseBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(browseBookLayout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(jLabel29))
-                    .addGroup(browseBookLayout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addGroup(browseBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, browseBookLayout.createSequentialGroup()
-                                .addGroup(browseBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(browseBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7)
-                                    .addGroup(browseBookLayout.createSequentialGroup()
-                                        .addComponent(choice3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(choice1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 918, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        browseBookLayout.setVerticalGroup(
-            browseBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(browseBookLayout.createSequentialGroup()
-                .addGap(85, 85, 85)
-                .addComponent(jLabel29)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(browseBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel7))
-                .addGap(5, 5, 5)
-                .addGroup(browseBookLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(choice1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1)
-                    .addComponent(choice3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        run.SearchMethod(jTable1,0,"All");
-
-        parent.add(browseBook, "card3");
 
         bookreservation.setBackground(new java.awt.Color(255, 255, 255));
         bookreservation.setPreferredSize(new java.awt.Dimension(1016, 748));
@@ -1252,11 +1101,8 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         run.notification(jButton8,USERNAME);
-        jTextField1.setText("");
-        choice3.select(0);
-        int selectedItem = (choice1.getSelectedIndex()==0) ? 0:1;
-        run.SearchMethod(jTextField1,jTable1,selectedItem,choice3.getSelectedItem());
-        changepanel(parent, browseBook);
+        run.downloadFile();
+        JOptionPane.showMessageDialog(null,"The file was saved to Downloads","Saved",JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField16ActionPerformed
@@ -1323,12 +1169,6 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
         jLabel48.setVisible(false);
     }//GEN-LAST:event_jButton24ActionPerformed
 
-    private void choice1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_choice1ItemStateChanged
-        int selectedItem = (choice1.getSelectedIndex()==0) ? 0:1;
-        String choice = choice3.getSelectedItem();
-        run.SearchMethod(jTable1,selectedItem,choice);
-    }//GEN-LAST:event_choice1ItemStateChanged
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         run.SearchMethod(jTextField2,jTable2,0,"All");
         run.notification(jButton8,USERNAME);
@@ -1379,12 +1219,6 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
             run.viewreservedbook(jTable4,id);
         }
     }//GEN-LAST:event_jTable4MouseClicked
-
-    private void choice3ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_choice3ItemStateChanged
-        int selectedItem = (choice1.getSelectedIndex()==0) ? 0:1;
-        String choice = choice3.getSelectedItem();
-        run.SearchMethod(jTable1,selectedItem,choice);
-    }//GEN-LAST:event_choice3ItemStateChanged
 
     private void jTable3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable3MouseClicked
         int bookid = Integer.parseInt(jTable3.getModel().getValueAt(jTable3.getSelectedRow(), 0).toString());
@@ -1613,11 +1447,8 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Buttons;
     private javax.swing.JPanel bookreservation;
-    private javax.swing.JPanel browseBook;
-    private java.awt.Choice choice1;
     private java.awt.Choice choice19;
     private java.awt.Choice choice2;
-    private java.awt.Choice choice3;
     private javax.swing.JPanel dashboard;
     private javax.swing.JPanel editInformation;
     private javax.swing.JPanel inputNewPass;
@@ -1641,8 +1472,6 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
@@ -1661,26 +1490,21 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
     private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JPasswordField jPasswordField2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField18;
