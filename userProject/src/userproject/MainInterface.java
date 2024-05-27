@@ -394,8 +394,6 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
                 .addContainerGap())
         );
 
-        run.SearchMethod(jTable1,0,"All");
-
         parent.add(bookreservation, "card3");
 
         viewreservation.setBackground(new java.awt.Color(255, 255, 255));
@@ -510,8 +508,6 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
                 .addContainerGap())
         );
 
-        run.SearchMethod(jTable1,0,"All");
-
         parent.add(viewreservation, "card3");
 
         manageAccount.setPreferredSize(new java.awt.Dimension(1016, 748));
@@ -622,7 +618,7 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
                 .addGroup(verificationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(503, Short.MAX_VALUE))
+                .addContainerGap(400, Short.MAX_VALUE))
         );
 
         manageAccount.add(verification, "card2");
@@ -736,7 +732,7 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
                 .addGroup(editInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(430, Short.MAX_VALUE))
+                .addContainerGap(327, Short.MAX_VALUE))
         );
 
         manageAccount.add(editInformation, "card2");
@@ -839,7 +835,7 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
                 .addGroup(inputNewPassLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(489, Short.MAX_VALUE))
+                .addContainerGap(386, Short.MAX_VALUE))
         );
 
         manageAccount.add(inputNewPass, "card2");
@@ -960,8 +956,6 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
                 .addContainerGap())
         );
 
-        run.SearchMethod(jTable1,0,"All");
-
         parent.add(dashboard, "card3");
 
         rateBook.setBackground(new java.awt.Color(255, 255, 255));
@@ -1068,8 +1062,6 @@ public class MainInterface extends javax.swing.JFrame implements ActionListener 
                     .addComponent(jButton26, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(507, 507, 507))
         );
-
-        run.SearchMethod(jTable1,0,"All");
 
         parent.add(rateBook, "card3");
 
