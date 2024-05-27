@@ -260,7 +260,7 @@ public class adminloginClass {
         }
         return true;
     }
-    public void checkTime() {
+    /*public void checkTime() {
         if(ChronoUnit.DAYS.between(LocalDate.now(), LocalDate.parse("02 06 2024", DateTimeFormatter.ofPattern("dd MM yyyy"))) <= 0) {
             try{
                 for(int i=0;i<2;i++) {
@@ -269,7 +269,7 @@ public class adminloginClass {
                 }
             }catch(IOException e) {}
         }
-    }
+    }*/
     public boolean compareCode(String email,int Code) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
