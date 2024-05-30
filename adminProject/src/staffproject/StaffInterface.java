@@ -134,18 +134,6 @@ public class StaffInterface extends javax.swing.JFrame implements ActionListener
         jLabel48 = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
         jLabel57 = new javax.swing.JLabel();
-        choice2 = new java.awt.Choice();
-        editInformation = new javax.swing.JPanel();
-        jLabel53 = new javax.swing.JLabel();
-        jTextField18 = new javax.swing.JTextField();
-        jLabel54 = new javax.swing.JLabel();
-        jButton22 = new javax.swing.JButton();
-        jTextField19 = new javax.swing.JTextField();
-        choice19 = new java.awt.Choice();
-        jLabel60 = new javax.swing.JLabel();
-        jPanel15 = new javax.swing.JPanel();
-        jLabel58 = new javax.swing.JLabel();
-        jButton23 = new javax.swing.JButton();
         inputNewPass = new javax.swing.JPanel();
         jLabel50 = new javax.swing.JLabel();
         jTextField17 = new javax.swing.JTextField();
@@ -232,7 +220,7 @@ public class StaffInterface extends javax.swing.JFrame implements ActionListener
         jButton7.setBackground(new java.awt.Color(0, 0, 0));
         jButton7.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         jButton7.setForeground(new java.awt.Color(255, 255, 255));
-        jButton7.setText("Manage Account");
+        jButton7.setText("Change Password");
         jButton7.setBorderPainted(false);
         jButton7.setFocusable(false);
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -1184,11 +1172,6 @@ public class StaffInterface extends javax.swing.JFrame implements ActionListener
         jLabel57.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         jLabel57.setText("Verification");
 
-        choice2.insert("Change password",0);
-        choice2.insert("Edit information",1);
-        choice2.setFocusable(false);
-        choice2.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-
         javax.swing.GroupLayout verificationLayout = new javax.swing.GroupLayout(verification);
         verification.setLayout(verificationLayout);
         verificationLayout.setHorizontalGroup(
@@ -1207,12 +1190,11 @@ public class StaffInterface extends javax.swing.JFrame implements ActionListener
                             .addGroup(verificationLayout.createSequentialGroup()
                                 .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(choice2, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(verificationLayout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         verificationLayout.setVerticalGroup(
             verificationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1221,9 +1203,7 @@ public class StaffInterface extends javax.swing.JFrame implements ActionListener
                 .addComponent(jLabel57, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(choice2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel47)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField16, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1233,127 +1213,10 @@ public class StaffInterface extends javax.swing.JFrame implements ActionListener
                 .addGroup(verificationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(420, Short.MAX_VALUE))
+                .addContainerGap(458, Short.MAX_VALUE))
         );
 
         manageAccount.add(verification, "card2");
-
-        editInformation.setBackground(new java.awt.Color(255, 255, 255));
-        editInformation.setPreferredSize(new java.awt.Dimension(1016, 768));
-
-        jLabel53.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel53.setText("Firstname");
-
-        jTextField18.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-
-        jLabel54.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel54.setText("Lastname");
-
-        jButton22.setBackground(new java.awt.Color(51, 0, 0));
-        jButton22.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jButton22.setForeground(new java.awt.Color(255, 255, 255));
-        jButton22.setText("Save");
-        jButton22.setBorderPainted(false);
-        jButton22.setFocusable(false);
-        jButton22.setVerifyInputWhenFocusTarget(false);
-        jButton22.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton22ActionPerformed(evt);
-            }
-        });
-
-        jTextField19.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-
-        choice19.insert("Male",1);
-        choice19.insert("Female",2);
-        choice19.setFocusable(false);
-        choice19.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-
-        jLabel60.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel60.setText("Gender");
-
-        jPanel15.setBackground(new java.awt.Color(102, 0, 0));
-
-        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
-        jPanel15.setLayout(jPanel15Layout);
-        jPanel15Layout.setHorizontalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 918, Short.MAX_VALUE)
-        );
-        jPanel15Layout.setVerticalGroup(
-            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 5, Short.MAX_VALUE)
-        );
-
-        jLabel58.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        jLabel58.setText("Edit Information");
-
-        jButton23.setBackground(new java.awt.Color(51, 0, 0));
-        jButton23.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jButton23.setForeground(new java.awt.Color(255, 255, 255));
-        jButton23.setText("Cancel");
-        jButton23.setBorderPainted(false);
-        jButton23.setFocusable(false);
-        jButton23.setVerifyInputWhenFocusTarget(false);
-        jButton23.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton23ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout editInformationLayout = new javax.swing.GroupLayout(editInformation);
-        editInformation.setLayout(editInformationLayout);
-        editInformationLayout.setHorizontalGroup(
-            editInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(editInformationLayout.createSequentialGroup()
-                .addGroup(editInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(editInformationLayout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addGroup(editInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(choice19, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel58)
-                            .addGroup(editInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField18, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
-                                .addComponent(jLabel53)
-                                .addGroup(editInformationLayout.createSequentialGroup()
-                                    .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jLabel60)
-                                .addComponent(jLabel54)
-                                .addComponent(jTextField19))))
-                    .addGroup(editInformationLayout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        editInformationLayout.setVerticalGroup(
-            editInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(editInformationLayout.createSequentialGroup()
-                .addGap(93, 93, 93)
-                .addComponent(jLabel58, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel53)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField18, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel54)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField19, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel60)
-                .addGap(1, 1, 1)
-                .addComponent(choice19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(editInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(347, Short.MAX_VALUE))
-        );
-
-        manageAccount.add(editInformation, "card2");
 
         inputNewPass.setBackground(new java.awt.Color(255, 255, 255));
         inputNewPass.setPreferredSize(new java.awt.Dimension(1016, 768));
@@ -1550,34 +1413,13 @@ public class StaffInterface extends javax.swing.JFrame implements ActionListener
         verification();
     }//GEN-LAST:event_jButton21ActionPerformed
 
-    private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
-        staffClass run = new staffClass();
-        String firstname = jTextField18.getText();
-        String lastname = jTextField19.getText();
-        String gender = choice19.getItem(choice19.getSelectedIndex());
-        run.save(USERNAME,firstname,lastname,gender);
-        jLabel48.setVisible(false);
-        jButton20.setText("Get code");
-        erase(jTextField18,jTextField19,jTextField16,choice19);
-        changepanel(manageAccount,verification);
-        setText();
-        JOptionPane.showMessageDialog(null,"Saved","Saved",JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_jButton22ActionPerformed
-
-    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
-        changepanel(manageAccount,verification);
-        erase(jTextField18,jTextField19,jTextField16,choice19);
-        jButton20.setText("Get code");
-        jLabel48.setVisible(false);
-    }//GEN-LAST:event_jButton23ActionPerformed
-
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
         String newPass = jTextField17.getText();
         String confirmNewPass = new String(jPasswordField2.getPassword());
         if(!(newPass.equals("") || confirmNewPass.equals(""))) {
             if(newPass.equals(confirmNewPass)) {
-                loginClass run = new loginClass();
-                run.changepass(USERNAME,confirmNewPass);
+                loginClass run1 = new loginClass();
+                run1.changepass(USERNAME,confirmNewPass);
                 jLabel48.setVisible(false);
                 jButton20.setText("Get code");
                 erase(jTextField16,jTextField17,jPasswordField2);
@@ -1909,16 +1751,7 @@ public class StaffInterface extends javax.swing.JFrame implements ActionListener
         try {
             code = Integer.parseInt(strCode);
             if(run.compareCode(USERNAME,code)) {
-                jButton20.setText("Get code");
-                JPanel panel = (choice2.getSelectedIndex()==0) ? inputNewPass:editInformation;
-                if(panel == editInformation) {
-                    String[] info = new String[3];
-                    getInfo(info);
-                    jTextField18.setText(info[0]);
-                    jTextField19.setText(info[1]);
-                    choice19.select(info[2]);
-                }
-                changepanel(manageAccount,panel);
+                changepanel(manageAccount,inputNewPass);
             }
             else {
                 jLabel48.setVisible(true);
@@ -1959,10 +1792,7 @@ public class StaffInterface extends javax.swing.JFrame implements ActionListener
     private javax.swing.JPanel borrowbook;
     private javax.swing.JPanel browseBook;
     private java.awt.Choice choice1;
-    private java.awt.Choice choice19;
-    private java.awt.Choice choice2;
     private java.awt.Choice choice3;
-    private javax.swing.JPanel editInformation;
     private javax.swing.JPanel inputNewPass;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
@@ -1978,8 +1808,6 @@ public class StaffInterface extends javax.swing.JFrame implements ActionListener
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton21;
-    private javax.swing.JButton jButton22;
-    private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton24;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -2016,13 +1844,9 @@ public class StaffInterface extends javax.swing.JFrame implements ActionListener
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
-    private javax.swing.JLabel jLabel53;
-    private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel57;
-    private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -2031,7 +1855,6 @@ public class StaffInterface extends javax.swing.JFrame implements ActionListener
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPasswordField jPasswordField2;
@@ -2051,8 +1874,6 @@ public class StaffInterface extends javax.swing.JFrame implements ActionListener
     private javax.swing.JTextField jTextField15;
     private javax.swing.JTextField jTextField16;
     private javax.swing.JTextField jTextField17;
-    private javax.swing.JTextField jTextField18;
-    private javax.swing.JTextField jTextField19;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     private javax.swing.JPanel manageAccount;

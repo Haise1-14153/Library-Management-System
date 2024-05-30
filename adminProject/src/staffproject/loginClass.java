@@ -137,7 +137,7 @@ public class loginClass {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/admindatabase","root","root");
-            String query = "update staffaccountinfo SET pass = ? where username = ?";
+            String query = "update accountinfo SET pass = ? where username = ?";
             prestmt = conn.prepareStatement(query);
             prestmt.setString(1,newpass);
             prestmt.setString(2,username);

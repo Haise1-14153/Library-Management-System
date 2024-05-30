@@ -919,7 +919,7 @@ public class AdminProject extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         changepanel(page,defaultBackground);
-        run.checkTime();
+        //run.checkTime();
         loggingInCall();
     }//GEN-LAST:event_jButton2ActionPerformed
 

